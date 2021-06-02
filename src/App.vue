@@ -16,7 +16,7 @@ export default {
     Tasks,
   },
   
-    Tasksdata(){
+  data(){
     return{
       tasks: []
     }
