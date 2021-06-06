@@ -1,49 +1,66 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker"/>
-    <Tasks @delete-task="deleteTask" :tasks="tasks" />
+    <Header @toggle-add-task="toggleAddTask" title="Task Tracker" :showAddTask="showAddTask"/>
+    <div v-show="showAddTask">
+      <AddTask @add-task="addTask" />
+    </div>
+    <Tasks
+      @toggle-reminder="toggleReminder"
+      @delete-task="deleteTask"
+      :tasks="tasks"
+    />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
+import AddTask from "./components/AddTask";
 
 export default {
   name: "App",
   components: {
     Header,
     Tasks,
+    AddTask,
   },
-  
-  data(){
-    return{
-      tasks: []
-    }
+
+  data() {
+    return {
+      tasks: [],
+      showAddTask: false,
+    };
   },
   methods: {
-    deleteTask(id){
-      if (confirm("Are you sure?")){
-        this.tasks = this.tasks.filter((task) => task.id !== id)
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask
+    },
+    addTask(task) {
+      this.tasks = [...this.tasks, task];
+    },
+    deleteTask(id) {
+      if (confirm("Are you sure?")) {
+        this.tasks = this.tasks.filter((task) => task.id !== id);
       }
+    },
+    toggleReminder(id) {
+      this.tasks = this.tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      );
+    },
+    async fetchTasks() {
+      const res = await fetch('api/tasks')
+      const data = await res.json()
+      return data
+    },
+    async fetchTask(id) {
+      const res = await fetch(`api/${id}`)
+      const data = await res.json()
+      return data
     }
   },
-  created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: 'Doctors Appointment',
-        day: 'March 1st at 2:30pm',
-        reminder: true,
-      },
-      
-      {
-        id: 2,
-        text: "Meet girlfriend",
-        day: 'May 29th',
-        reminder: true,
-      }
-    ]
+  async created() {
+    this.tasks = await this.fetchTasks()
   }
 };
 </script>
