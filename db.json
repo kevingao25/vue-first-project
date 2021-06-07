@@ -15,7 +15,7 @@
     {
       "text": "This is crazy",
       "day": "Everyday",
-      "reminder": false,
+      "reminder": true,
       "id": "vE0FJoF"
     }
   ]
