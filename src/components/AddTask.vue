@@ -22,45 +22,44 @@
   </form>
 </template>
 
-
 <script>
 export default {
-    name: 'AddTask',
-    data() {
-      return{
-        text: '',
-        day: '',
-        reminder: false
+  name: "AddTask",
+  data() {
+    return {
+      text: "",
+      day: "",
+      reminder: false,
+    };
+  },
+  methods: {
+    onSubmit(e) {
+      e.preventDefault();
+
+      // Check if the task is valid
+      if (!this.text) {
+        alert("Please add a task");
+        return;
       }
+
+      // Add an new Task object
+      const newTask = {
+        // id: Math.floor(Math.random() * 100000),
+        text: this.text,
+        day: this.day,
+        reminder: this.reminder,
+      };
+
+      // Emit the data up one level
+      this.$emit("add-task", newTask);
+
+      // Reset text, day, reminder back to default
+      this.text = "";
+      this.day = "";
+      this.reminder = false;
     },
-    methods: {
-      onSubmit(e) {
-        e.preventDefault();
-        
-        // Check if the task is valid
-        if (!this.text){
-          alert('Please add a task')
-          return
-        }
-
-        // Add an new Task object
-        const newTask = {
-          // id: Math.floor(Math.random() * 100000),
-          text: this.text,
-          day: this.day,
-          reminder: this.reminder
-        }
-
-        // Emit the data up one level
-        this.$emit('add-task', newTask)
-
-        // Reset text, day, reminder back to default
-        this.text = ''
-        this.day = ''
-        this.reminder = false
-      }
-    }
-}
+  },
+};
 </script>
 
 <style scoped>

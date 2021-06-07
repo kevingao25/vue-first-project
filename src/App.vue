@@ -63,36 +63,35 @@ export default {
     },
     async toggleReminder(id) {
       // Fetch the task and change reminder status
-      const taskToToggle = await this.fetchTask(id)
-      const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
+      const taskToToggle = await this.fetchTask(id);
+      const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
       // Update the changed task to server
       const res = await fetch(`api/tasks/${id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-type': 'application/json'
+          "Content-type": "application/json",
         },
-        body: JSON.stringify(updTask)
-      })
+        body: JSON.stringify(updTask),
+      });
 
-      const data = await res.json()
+      const data = await res.json();
 
       // Display the changed tasks
       this.tasks = this.tasks.map((task) =>
-        task.id === id ? { ...task, reminder: data.reminder} : task
+        task.id === id ? { ...task, reminder: data.reminder } : task
       );
     },
     async fetchTasks() {
       const res = await fetch("api/tasks");
       const data = await res.json();
-      console.log(data)
+      console.log(data);
       return data;
     },
     async fetchTask(id) {
       const res = await fetch(`api/tasks/${id}`);
       const data = await res.json();
       return data;
-
     },
   },
   async created() {
@@ -100,7 +99,6 @@ export default {
   },
 };
 </script>
-
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
