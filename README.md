@@ -12,12 +12,11 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
+npm run backend
 npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
+App running at:
+  - Local:   http://localhost:8080/vue-first-project/ 
 ```
 
 ### Customize configuration
