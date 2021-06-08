@@ -14,9 +14,6 @@ npm install
 ```
 npm run backend
 npm run serve
-
-App running at:
-  - Local:   http://localhost:8080/vue-first-project/ 
 ```
 
 ### Customize configuration
