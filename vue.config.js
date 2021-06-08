@@ -1,5 +1,6 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/hello-world/" : "/",
+  publicPath:
+    process.env.NODE_ENV === "production" ? "/vue-first-project/" : "/",
   devServer: {
     proxy: {
       "^/api": {
