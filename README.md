@@ -1,7 +1,10 @@
 # vue-first-project
 
-A record of my first week of Vue.js learning.
-The project is a simple to-do list that uses Vue-cli, Router, and a fake JSON based backend
+A record of my first week of Vue.js learning. <br />
+The project is a simple to-do list that uses Vue-cli, Router, and a fake JSON based backend. <br />
+
+
+
 ## Project setup
 ```
 npm install
