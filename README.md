@@ -1,7 +1,7 @@
-# vue-first-project
+# Task Manager
 
 A record of my first week of Vue.js learning. <br />
-The project is a simple to-do list that uses Vue-cli, Router, and a fake JSON based backend. <br />
+The project is a simple to-do list that uses Vue-cli, Router, and a fake JSON Server based backend. <br />
 
 
 
