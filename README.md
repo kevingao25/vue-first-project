@@ -4,7 +4,9 @@ A record of my first week of Vue.js learning. <br />
 The project is a simple to-do list that uses Vue-cli, Router, and a fake JSON Server based backend. <br />
 <br/>
 
-<img src="/screenshot.png" alt="screen shot" width="200"/>
+<img src="/screenshot.png" alt="screen shot" width="400"/>
+
+<br/>
 
 ## Project setup
 ```
